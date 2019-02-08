@@ -205,6 +205,19 @@
             </property>
            </widget>
           </item>
+          <item row="1" column="1">
+           <widget class="ActionButton" name="actionbutton_3">
+            <property name="text">
+             <string>Home All</string>
+            </property>
+            <property name="rules" stdset="0">
+             <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'Homed' if ch[0][0] and ch[0][1] and ch[0][2] else 'Home All'&quot;, &quot;name&quot;: &quot;Button Text&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Style Sheet&quot;, &quot;expression&quot;: &quot;'background-color: rgb(150,255,150)' if ch[0][0] and ch[0][1] and ch[0][2] else 'background-color:rgb(240,240,80)'&quot;, &quot;name&quot;: &quot;Background Color&quot;}]</string>
+            </property>
+            <property name="actionName" stdset="0">
+             <string>machine.home.all</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -271,7 +284,7 @@
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
                <property name="rules" stdset="0">
-                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:axis?rel&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.4f}'.format(ch[0][1])&quot;, &quot;name&quot;: &quot;z Relative Position&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:axis?rel&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.4f}'.format(ch[0][2])&quot;, &quot;name&quot;: &quot;z Relative Position&quot;}]</string>
                </property>
               </widget>
              </item>
@@ -447,6 +460,16 @@
                </property>
               </widget>
              </item>
+             <item row="2" column="0" colspan="3">
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>Work Offsets</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
              <item row="0" column="0">
               <widget class="StatusLabel" name="statuslabel_11">
                <property name="frameShape">
@@ -465,6 +488,9 @@
              </item>
              <item row="3" column="0">
               <widget class="StatusLabel" name="statuslabel_13">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
                <property name="rules" stdset="0">
                 <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'X {}'.format(ch[0][0])&quot;, &quot;name&quot;: &quot;G5x Offset X Axis&quot;}]</string>
                </property>
@@ -472,6 +498,9 @@
              </item>
              <item row="3" column="1">
               <widget class="StatusLabel" name="statuslabel_14">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
                <property name="rules" stdset="0">
                 <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'Y {}'.format(ch[0][1])&quot;, &quot;name&quot;: &quot;G5x Offset - Y Axis&quot;}]</string>
                </property>
@@ -479,19 +508,81 @@
              </item>
              <item row="3" column="2">
               <widget class="StatusLabel" name="statuslabel_15">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
                <property name="rules" stdset="0">
                 <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'Y {}'.format(ch[0][2])&quot;, &quot;name&quot;: &quot;G5x Offset - Z Axis&quot;}]</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="0" colspan="3">
-              <widget class="QLabel" name="label_10">
-               <property name="text">
-                <string>Work Offsets</string>
+             <item row="5" column="0" colspan="3">
+              <widget class="QGroupBox" name="gridGroupBox">
+               <property name="title">
+                <string>Jog Controls</string>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
+               <layout class="QGridLayout" name="gridLayout_12">
+                <item row="1" column="1">
+                 <widget class="ActionButton" name="actionbutton_23">
+                  <property name="text">
+                   <string>Y+</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.jog.axis:y,pos</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="ActionButton" name="actionbutton_22">
+                  <property name="text">
+                   <string>X+</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.jog.axis:x,pos</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="ActionButton" name="actionbutton_24">
+                  <property name="text">
+                   <string>Z+</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.jog.axis:z,pos</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="ActionButton" name="actionbutton_25">
+                  <property name="text">
+                   <string>X-</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.jog.axis:x,neg</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="ActionButton" name="actionbutton_26">
+                  <property name="text">
+                   <string>Y-</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.jog.axis:y,neg</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="ActionButton" name="actionbutton_27">
+                  <property name="text">
+                   <string>Z-</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.jog.axis:z,neg</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
@@ -587,7 +678,7 @@
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
                <property name="rules" stdset="0">
-                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0f}%'.format(ch[0])&quot;, &quot;name&quot;: &quot;Feed Override&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0f}%'.format(ch[0]*100)&quot;, &quot;name&quot;: &quot;Feed Override&quot;}]</string>
                </property>
               </widget>
              </item>
@@ -635,7 +726,7 @@
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
                <property name="rules" stdset="0">
-                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle[0].override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0f}%'.format(ch[0])&quot;, &quot;name&quot;: &quot;Spindle Override&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle[0].override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0f}%'.format(ch[0]*100)&quot;, &quot;name&quot;: &quot;Spindle Override&quot;}]</string>
                </property>
               </widget>
              </item>
@@ -683,7 +774,7 @@
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
                <property name="rules" stdset="0">
-                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0f}%'.format(ch[0])&quot;, &quot;name&quot;: &quot;Rapid Override&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0f}%'.format(ch[0]*100)&quot;, &quot;name&quot;: &quot;Rapid Override&quot;}]</string>
                </property>
               </widget>
              </item>
