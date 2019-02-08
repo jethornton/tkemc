@@ -1,0 +1,6 @@
+[gui_scripts]
+tkemc = tkemc:main
+
+[qtpyvcp.vcp]
+tkemc = tkemc
+

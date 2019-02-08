@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+tkemc/__init__.py
+tkemc/__init__.py.bak
+tkemc/config.yml
+tkemc/config.yml.bak
+tkemc/mainwindow.py
+tkemc.egg-info/PKG-INFO
+tkemc.egg-info/SOURCES.txt
+tkemc.egg-info/dependency_links.txt
+tkemc.egg-info/entry_points.txt
+tkemc.egg-info/top_level.txt
+tkemc/resources/resources.qrc
+tkemc/ui/mainwindow.ui
+tkemc/ui/style.qss
